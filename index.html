@@ -1,163 +1,359 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Gradual migration to Angular</title>
+  <title>Gradual migration to Angular</title>
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css">
-    <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/night.css">
+  <link rel="stylesheet" href="css/custom.css">
 
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/monokai.css">
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/monokai.css">
 
-    <!-- Printing and PDF exports -->
-    <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
+  <!-- Printing and PDF exports -->
+  <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
 </head>
 <body>
 <div class="reveal">
-    <div class="slides">
-        <section>
-            <section>
-                <h3>Gradual migration to <img class="angular-logo" src="img/angular.svg" alt="A">ngular</h3>
-                <p>by Olga Kichewko & Maciek Małecki</p>
-            </section>
-            <section>
-                <h1 class="huge">SPA</h1>
-            </section>
-        </section>
+  <div class="slides">
+    <section>
+      <h3>Gradual migration to <img class="angular-logo" src="img/angular.svg" alt="A">ngular</h3>
+      <p>by Olga Kichewko & Maciek Małecki</p>
+    </section>
 
-        <section data-background-image="img/harold.jpg" data-transition="slide" data-transition-speed="slow">
-            <div class="overlay">
-                <h4>Harold is asked to migrate an old style web app into modern
-                    cutting edge Angular something...</h4>
-                <ul>
-                    <li>we want to have complex dynamics on our pages</li>
-                    <li>we can easily test UI written in Angular</li>
-                    <li>server-generated HTML pages are no longer "sexy"</li>
-                </ul>
-            </div>
-        </section>
+    <section>
+      <h2>What are the most complex development tasks?</h2>
+    </section>
 
-        <section>
-            <section>
-                <h1>Possibilities</h1>
-            </section>
-            <section>
-                <h2>Big bang</h2>
-                <ul>
-                    <li class="pros fragment" data-fragment-index="1">clean sheet design</li>
-                    <li class="pros fragment" data-fragment-index="1">no impact on production during dev</li>
-                    <li class="cons fragment" data-fragment-index="2">huge effort before it's ready</li>
-                    <li class="cons fragment" data-fragment-index="2">"chase the rabbit"</li>
-                    <li class="cons fragment" data-fragment-index="2">necessity to use two apps</li>
-                </ul>
-            </section>
-            <section>
-                <p>"<em>Big bang</em> approach fails by definition for bigger projects."</p>
-                <p class="author-signature">Anonymous Architect</p>
-            </section>
-            <section>
-                <h5>if only we could migrate gradually...</h5>
-                <ul>
-                    <li class="pros fragment" data-fragment-index="1">we could deliver small chunks on regular basis
-                    </li>
-                    <li class="pros fragment" data-fragment-index="1">compatible with CI/CD</li>
-                    <li class="pros fragment" data-fragment-index="1">no cancellation risk: code is already there</li>
-                    <li class="cons fragment">two technologies mixed for some (long) time</li>
-                </ul>
-            </section>
-        </section>
+    <section>
+      <div class="tiles">
+        <div>
+          <img src="img/CPM-86.png" alt="CPM">
+          <p>CP/M</p>
+        </div>
+        <div>
+          <img src="img/apple_lisa_screenshot.gif" alt="Lisa">
+          <p>Lisa OS</p>
+        </div>
+        <div>
+          <img src="img/Apple_Macintosh_Desktop.png" alt="MacOS">
+          <p>Mac OS</p>
+        </div>
+        <div>
+          <img src="img/GeOS_Commodore_64.gif" alt="GEOS">
+          <p>GEOS</p>
+        </div>
+        <div>
+          <img src="img/turbo-vision.jpg" alt="TV">
+          <p>Turbo Vision</p>
+        </div>
+        <div class="break"></div>
+        <div>
+          <img src="img/Windows1.0.png" alt="Win1">
+          <p>MS Windows 1.0</p>
+        </div>
+        <div>
+          <img src="img/Windows_3.0_workspace.png" alt="Win3">
+          <p>MS Windows 3.0</p>
+        </div>
+        <div>
+          <img src="img/Wb_20.png" alt="Workbench">
+          <p>Amiga OS</p>
+        </div>
+        <div>
+          <img src="img/Tos492.png" alt="TOS">
+          <p>Atari TOS</p>
+        </div>
+        <div>
+          <img src="img/614px-NeXTSTEP_desktop.png" alt="NeXT">
+          <p>NeXT STEP</p>
+        </div>
+        <div class="break"></div>
+        <div>
+          <img src="img/NCSAMosaic1.0Mac.png" alt="Mosaic">
+          <p>NCSA Mosaic</p>
+        </div>
+        <div>
+          <img src="img/CGIlogo.gif" alt="CGI">
+          <p>CGI</p>
+        </div>
+        <div>
+          <img src="img/640px-PHP-logo.svg.png" alt="PHP">
+          <p>PHP</p>
+        </div>
+        <div>
+          <img src="img/Duke_(Java_mascot)_waving.svg" alt="Java">
+          <p>Java</p>
+        </div>
+        <div>
+          <img src="img/480px-Unofficial_JavaScript_logo_2.svg.png" alt="JS">
+          <p>JavaScript</p>
+        </div>
+      </div>
 
-        <section>
-            <section>
-                <h1>Let's complicate our case</h1>
-            </section>
-            <section>
-                <h2>CI/CD</h2>
-                <ul>
-                    <li>Working (almost) always on short living branches</li>
-                    <li>Kanban - no sprints</li>
-                    <li>Automatic deployment on test environment</li>
-                    <li>Production releases at least once per week</li>
-                </ul>
-            </section>
-        </section>
+      <div class="rights">
+        By <a href="https://en.wikipedia.org/wiki/Digital_Research,_Inc." class="extiw"
+              title="en:Digital Research, Inc.">Digital Research, Inc.</a> - <a rel="nofollow" class="external free"
+                                                                                href="http://www.hampa.ch/pce/screenshots/index.html">http://www.hampa.ch/pce/screenshots/index.html</a>,
 
-        <section>
-            <h3>Our approach</h3>
-            <div class="diagram">
-                <div class="fragment" data-fragment-index="1">
-                    <h4>Spring MVC</h4>
-                    <ul>
-                        <li>server side rendering</li>
-                        <li>template engine</li>
-                        <li>maybe some standalone JS</li>
-                        <li>maybe some AJAX calls</li>
-                    </ul>
-                </div>
-                <img src="img/arrow-right.svg" alt="rght" class="fragment" width="50" data-fragment-index="2">
-                <div class="fragment" data-fragment-index="2">
-                    <h4>Hybrid</h4>
-                    <ul>
-                        <li>Angular as JS library</li>
-                        <li>Manages just portion of the page</li>
-                        <li>No routing</li>
-                        <li>One by one migration</li>
-                    </ul>
-                </div>
-                <img src="img/arrow-right.svg" alt="rght" class="fragment" width="50" data-fragment-index="3">
-                <div class="fragment" data-fragment-index="3">
-                    <h4>SPA</h4>
-                    <ul>
-                        <li>All pages are Angular components</li>
-                        <li>Router introduced</li>
-                        <li>Routings defined</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=77387751">Link</a>
 
-        <section>
-            <h1>Demo time</h1>
-            <img src="img/we-can-rebuild.jpg" alt="">
-        </section>
+        By unknown, <a href="https://en.wikipedia.org/w/index.php?curid=1016513">Link</a>
 
-        <section>
-            <h1>Summary</h1>
-            <div class="aside">
-                <img src="img/harold-won.jpg" alt="">
-                <div class="to-left smaller">
-                    <h3><img class="skull" src="img/unicorn.svg" alt="u">Happy parts</h3>
-                    <ul>
-                        <li>It works!</li>
-                        <li>Very effective for good source architecture</li>
-                    </ul>
-                    <h3><img class="skull" src="img/skull-and-bones.svg" alt="s" width=""> Tricky parts</h3>
-                    <ul>
-                        <li>Communication between Thymeleaf and Angular</li>
-                        <li>Root component</li>
-                        <li>Angular resources versioning</li>
-                        <li>Developers' mode</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <section>
-            <h3>Find us on GitHub</h3>
-            <img src="img/qrcode.svg" alt="">
-            <a href="https://github.com/kiczelkoo/miniAngular">https://github.com/kiczelkoo/miniAngular</a>
-        </section>
-    </div>
+        By Source, <a href="//en.wikipedia.org/wiki/File:GeOS_Commodore_64.gif"
+                      title="Fair use of copyrighted material in the context of GEOS (8-bit operating system)">Fair
+        use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=991052">Link</a>
+
+        By Screenshot taken and uploaded by <a href="//en.wikipedia.org/wiki/User:Remember_the_dot"
+                                               title="User:Remember the dot">Remember&nbsp;the&nbsp;dot</a>&nbsp;(<a
+          href="//en.wikipedia.org/wiki/User_talk:Remember_the_dot" title="User talk:Remember the dot">talk</a>&nbsp;·
+        <a href="//en.wikipedia.org/wiki/Special:Contributions/Remember_the_dot"
+           title="Special:Contributions/Remember the dot">contribs</a>), <a
+          href="https://en.wikipedia.org/w/index.php?curid=8328551">Link</a>
+
+        By Screenshot is taken and uploaded by <a href="//en.wikipedia.org/wiki/User:Tyomitch" title="User:Tyomitch">Tyomitch</a>&nbsp;(<a
+          href="//en.wikipedia.org/wiki/User_talk:Tyomitch" title="User talk:Tyomitch">talk</a>&nbsp;· <a
+          href="//en.wikipedia.org/wiki/Special:Contributions/Tyomitch"
+          title="Special:Contributions/Tyomitch">contribs</a>), <a
+          href="https://en.wikipedia.org/w/index.php?curid=2611871">Link</a>
+
+        By Matthias Jaap - own work, <a rel="nofollow" class="external free"
+                                        href="http://www.stcarchiv.de/stc1999/01_tos492.php">http://www.stcarchiv.de/stc1999/01_tos492.php</a>,
+        Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=900912">Link</a>
+
+        By Source, <a href="//en.wikipedia.org/wiki/File:NCSAMosaic1.0Mac.png"
+                      title="Fair use of copyrighted material in the context of Mosaic (web browser)">Fair use</a>, <a
+          href="https://en.wikipedia.org/w/index.php?curid=25739330">Link</a>
+
+        By Colin Viebrock - <a rel="nofollow" class="external free" href="http://php.net/logos">http://php.net/logos</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC
+          BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=9632398">Link</a>
+
+        By sbmehta converted to SVG from Sun Microsystems AI version. - <a rel="nofollow" class="external free"
+                                                                           href="http://duke.kenai.com/wave/index.html">http://duke.kenai.com/wave/index.html</a>
+        (new), <a rel="nofollow" class="external free" href="https://duke.dev.java.net/images/wave/index.html">https://duke.dev.java.net/images/wave/index.html</a>
+        (old), <a href="http://opensource.org/licenses/bsd-license.php" title="BSD license">BSD</a>, <a
+          href="https://commons.wikimedia.org/w/index.php?curid=3232280">Link</a>
+
+        By <a rel="nofollow" class="external text" href="https://github.com/voodootikigod">Chris Williams</a> - <a
+          rel="nofollow" class="external text" href="https://github.com/voodootikigod/logo.js/blob/1544bdeed/js.svg">GitHub.com</a>,
+        Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=20806506">Link</a>
+      </div>
+    </section>
+
+    <section>
+      <h3>Where are we going</h3>
+      <img src="img/617px-Burj_Khalifa.jpg" alt="Burj Khalifa" height="490">
+      <div class="rights">By <a href="https://commons.wikimedia.org/wiki/User:Donaldytong" class="extiw"
+                                title="commons:User:Donaldytong">Donaldytong</a> - <a
+          href="https://en.wikipedia.org/wiki/File:Burj_Khalifa.jpg" class="extiw" title="en:File:Burj Khalifa.jpg">en:File:Burj_Khalifa.jpg</a>,
+        <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC
+          BY-SA 3.0</a>, <a href="https://pl.wikipedia.org/w/index.php?curid=4059659">Link</a></div>
+    </section>
+
+    <section>
+      <h3>How do we start</h3>
+      <img src="img/foundation.jpg" alt="Foundation" height="480">
+    </section>
+
+    <section>
+      <h3>Where have we ended</h3>
+      <img src="img/koszmary-1.jpg" alt="Koszmary Architektury" height="490">
+      <div class="rights">By <a href="https://www.facebook.com/Koszmary-architektury-130152757035916/">Koszmary
+        Architektury</a></div>
+    </section>
+
+    <section>
+      <img src="img/demolition.gif" alt="Demolition" height="400">
+      <div class="rights">Source: <a href="https://imgur.com/user/ApprovingNod">https://imgur.com/user/ApprovingNod</a>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="aside">
+        <div>
+          <img src="img/JoelOnSoftware.png" alt="Joel Spolsky">
+          <div class="rights">Source: <a href="https://www.joelonsoftware.com">https://www.joelonsoftware.com</a></div>
+        </div>
+        <div class="fragment align-left">
+          <h3>Joel Spolsky</h3>
+          <ul>
+            <li>Program Manager in Microsoft Excel Team</li>
+            <li>Co-Founder of Stack Overflow</li>
+            <li>Founder of Trello</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>Joel Spolsky</h3>
+      <a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">Things you should never
+        do</a> (2000)
+      <p>"Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is
+        to bulldoze the place flat and build something grand."</p>
+    </section>
+
+    <section>
+      <h4>It took almost three years to rewrite Netscape Navigator from scratch</h4>
+      <div class="aside">
+        <div>
+          <img src="img/ns479_ss.png" alt="Netscape" width="380">
+          <div class="rights">Source: <a href="soft32.com">Soft32.com</a></div>
+        </div>
+        <div>
+          <img src="img/Netscape_6.1.png" alt="N61" width="380">
+          <div class="rights">By <a href="https://foundation.wikimedia.org/wiki/Contact_us" class="extiw"
+                                    title="wmf:Contact us">Wikimedia Foundation</a>, <a
+              href="https://creativecommons.org/licenses/by-sa/3.0/"
+              title="Creative Commons Attribution-ShareAlike 3.0">CC BY-SA 3.0</a>, <a
+              href="https://en.wikipedia.org/w/index.php?curid=8429911">Link</a></div>
+        </div>
+      </div>
+
+    </section>
+
+    <section>
+      <h1>Challenge</h1>
+      <img src="img/angular.svg" alt="Angular" height="380">
+    </section>
+
+    <section>
+      <h2>Migrate an old style web app into modern
+        cutting edge Angular something...</h2>
+    </section>
+
+    <section>
+      <h1>Why?</h1>
+      <ul>
+        <li>we want to have complex dynamics on our pages</li>
+        <li>we can easily test UI written in Angular</li>
+        <li>server-generated HTML pages are no longer "sexy"</li>
+        <li>old code gets messy (as usual)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h1>Possibilities</h1>
+    </section>
+    <section>
+      <h2>Big bang</h2>
+      <ul>
+        <li class="pros fragment" data-fragment-index="1">clean sheet design</li>
+        <li class="pros fragment" data-fragment-index="1">no impact on production during dev</li>
+        <li class="cons fragment" data-fragment-index="2">huge effort before it's ready</li>
+        <li class="cons fragment" data-fragment-index="2">"chase the rabbit"</li>
+        <li class="cons fragment" data-fragment-index="2">necessity to use two apps</li>
+      </ul>
+    </section>
+    <section>
+      <p>"<em>Big bang</em> approach fails by definition for bigger projects."</p>
+      <p class="author-signature">Anonymous Architect</p>
+    </section>
+    <section>
+      <img src="img/airport.jpg" alt="Airport">
+      <div class="rights">Photo: Christian Lohse</div>
+    </section>
+    <section>
+      <h2>If only we could migrate gradually...</h2>
+      <ul>
+        <li class="pros fragment" data-fragment-index="1">we could deliver small chunks on regular basis
+        </li>
+        <li class="pros fragment" data-fragment-index="1">compatible with CI/CD</li>
+        <li class="pros fragment" data-fragment-index="1">no cancellation risk: code is already there</li>
+        <li class="cons fragment">two technologies mixed for some (long) time</li>
+      </ul>
+    </section>
+
+    <section>
+      <h1>Let's complicate our case</h1>
+    </section>
+    <section>
+      <h2>CI/CD</h2>
+      <ul>
+        <li>Working (almost) always on short living branches</li>
+        <li>Kanban - no sprints</li>
+        <li>Automatic deployment on test environment</li>
+        <li>Production releases at least once per week</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Our approach</h3>
+      <div class="diagram">
+        <div class="fragment" data-fragment-index="1">
+          <h4>Spring MVC</h4>
+          <ul>
+            <li>server side rendering</li>
+            <li>template engine</li>
+            <li>maybe some standalone JS</li>
+            <li>maybe some AJAX calls</li>
+          </ul>
+        </div>
+        <img src="img/arrow-right.svg" alt="rght" class="fragment" width="50" data-fragment-index="2">
+        <div class="fragment" data-fragment-index="2">
+          <h4>Hybrid</h4>
+          <ul>
+            <li>Angular as JS library</li>
+            <li>Manages just portion of the page</li>
+            <li>No routing</li>
+            <li>One by one migration</li>
+          </ul>
+        </div>
+        <img src="img/arrow-right.svg" alt="rght" class="fragment" width="50" data-fragment-index="3">
+        <div class="fragment" data-fragment-index="3">
+          <h4>SPA</h4>
+          <ul>
+            <li>All pages are Angular components</li>
+            <li>Router introduced</li>
+            <li>Routings defined</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h1>Demo time</h1>
+      <img src="img/we-can-rebuild.jpg" alt="We can rebuild it" height="350">
+      <div class="rights">Source: <a href="starecat.com">starecat.com</a></div>
+    </section>
+
+    <section>
+      <h2>Let's summarize</h2>
+      <div class="to-left smaller">
+        <h3 class="fancy"><img class="skull" src="img/unicorn.svg" alt="u">Happy parts</h3>
+        <ul>
+          <li>It works!</li>
+          <li>Very effective for good source architecture</li>
+        </ul>
+        <h3 class="fancy"><img class="skull" src="img/skull-and-bones.svg" alt="s" width=""> Tricky parts</h3>
+        <ul>
+          <li>Communication between Thymeleaf and Angular</li>
+          <li>Root component</li>
+          <li>Angular resources versioning</li>
+          <li>Developers' mode</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <h2>Find us on GitHub (TBD)</h2>
+      <img src="img/qrcode.svg" alt="QR Code" height="248">
+      <a href="https://github.com/kiczelkoo/miniAngular">https://github.com/kiczelkoo/miniAngular</a>
+      <h4>Pls rate us and give your feedback: <img src="img/eventory.png" alt="Eventory" class="eventory-logo"> Eventory
+      </h4>
+    </section>
+  </div>
 </div>
 
 <script src="js/reveal.js"></script>
@@ -178,7 +374,7 @@
     });
     Reveal.configure({
         slideNumber: 'c/t',
-        transition: 'fade'
+        transition: 'slide'
     });
 </script>
 </body>

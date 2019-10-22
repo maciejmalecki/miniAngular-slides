@@ -10,6 +10,12 @@
     position: relative;
     margin: 0 0 -19px 0;
 }
+.reveal section img.eventory-logo {
+    width: 70px;
+    display: inline-block;
+    position: relative;
+    margin: 0 0 -19px 0;
+}
 .reveal section img.skull {
     width: 70px;
     margin: 0 0 -19px 0;
@@ -77,4 +83,36 @@ div.diagram ul,div.diagram p {
 }
 .smaller {
     font-size: 32px;
+}
+div.rights {
+    font-size: small;
+}
+.align-left {
+    text-align: left;
+}
+.underline {
+    text-decoration: underline;
+}
+.reveal section div.tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+.reveal section div.tiles > div > img {
+    border-style: none;
+    border-width: 0px;
+    background: rgba(255,255,255,0);
+    height: 100px;
+    margin: 5px;
+}
+.reveal section div.tiles > div > p {
+    font-size: large;
+    margin: 0px 0px 18px 0px;
+}
+h3.fancy {
+    margin-top: 35px;
 }
